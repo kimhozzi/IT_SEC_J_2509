@@ -1,0 +1,23 @@
+1. Git - 다운로드 
+
+
+2. Git scm 윈도우 버전 받아서 설치
+vs code 설치해서 git 명령어 사용하지 않아도 쓸 수 있게 하자
+
+3. vs code 설치 
+- 이걸로 서버도 만드는 것 같던데 node.js 깔아가지고 ㅇㅇ..
+VS code = 코딩 IDE
+웹, 앱, 인공지능, GIT 모두 이걸로 합시다.
+
+javascript , typescript, python
+
+1)
+git config --global user.name "kimhozzi"
+
+git config --global user.email "kjho9808@gmail.com"
+
+~> git 
+
+ctrl + J : 터미널 여는 명령어
+shift + Insert : 붙여넣기
+
