@@ -11,13 +11,47 @@ VS code = 코딩 IDE
 
 javascript , typescript, python
 
-1)
+1) git 커밋할 때 내 이름과 이메일 남기는 작업 먼저 하기
+
+
+vs code 와 git 연동
 git config --global user.name "kimhozzi"
 
 git config --global user.email "kjho9808@gmail.com"
 
-~> git 
-
 ctrl + J : 터미널 여는 명령어
 shift + Insert : 붙여넣기
 
+// 
+1. (최초 1회) Git config 설정
+
+"git config --global user.name "kimhozzi"
+
+git config --global user.email "kjho9808@gmail.com""
+
+2. VS Code에서 수정 → 커밋
+
+"파일 수정 후 VS Code 소스 제어 탭에서 커밋 버튼 클릭
+or
+git add .
+git commit -m "커밋 메시지"
+
+
+3. 브랜치 확인
+
+"git branch"
+
+4. push
+
+"git push origin main"
+
+5. GitHub에서 Commits 확인
+"
+장소 페이지 → 상단 메뉴의 "Commits" 클릭
+
+방금 커밋이 올라와 있고,
+
+작성자 이름: kimhozzi
+
+이메일: kjho9808@gmail.com
+로 표시됨"
