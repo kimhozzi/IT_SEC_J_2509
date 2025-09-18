@@ -1,0 +1,21 @@
+npm : 시스템 조작
+관리자모드 powershell에서 npm 권한 해제 해줘야 한다.
+
+Get ExecutionPolicy
+
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+~ 개인PC에도 설치해놓자
+어 생각해보니까 집 python은 3.10 ~ 일텐데 
+
+
+// 문자열 포매팅 
+/* 문자열 포매팅 방식 -js, py
+js = `${}` ex) 위 참고 let a =1; let b =3;   console.log(`a(${a}) + b(${b}) = c(${c})`)
+py = f스트링 ex) name = "정호"  print(f"안녕, {name}!") -> 이게 ㅈ사기임
+
+*/
+
+// 상수 설정 js = const py = CON
+// con1=1;
+// py : CON1;   이번 주말에 react 쭉 해볼까? 
