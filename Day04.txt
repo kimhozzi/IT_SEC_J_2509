@@ -1,0 +1,35 @@
+1. typescript 설치
+
+npm install -g ts-node typescript
+npm = node.js 계열 모델 관리 
+
+
+~ = pip install ~ : py와 같다  
+
+
+typescript 를 쓴다면
+ts를 사용해서 로그인 할때
+let id : number | string;
+// if 아이디변수를 만들 때 
+let pw : number | string; 
+//DB 변수 = stID
+id = db에서 가져오기 
+만약 아니라면 
+
+if id != stID {
+    console.log("로그인 실패");
+}
+else { "로그인되었습니다"}; 
+-> 이런 식일까?
+
+
+ANS. no .
+db에서 가져올 때는 어차피 String 자료형으로만 가져오기 때문에, 굳이 필요 없음.
+
+// typescript
+function login(id: string, pw: string): boolean {
+  const dbID = "user01";
+  const dbPW = "1234";
+
+  return id === dbID && pw === dbPW;
+}

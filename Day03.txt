@@ -19,3 +19,7 @@ py = f스트링 ex) name = "정호"  print(f"안녕, {name}!") -> 이게 ㅈ사�
 // 상수 설정 js = const py = CON
 // con1=1;
 // py : CON1;   이번 주말에 react 쭉 해볼까? 
+
+
+
+// DAY3 마지막은 배열 했네 ㅇㅇ
