@@ -59,3 +59,8 @@ curl -X POST http://127.0.0.1:8000/echo -H "Content-Type: application/json" -d "
 010 4595 6530 - 오후 담임선생님 전화번호
 
 이번 주 서버하나 파서 git에 올리기...
+
+
+
+shorturl.at/1GzaD
+shorturl.at/96aYt
