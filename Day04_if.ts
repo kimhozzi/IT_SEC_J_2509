@@ -49,7 +49,7 @@ else {console.log("if, else if 모두 아닐 때 실행")}
 //d score>=60 && score <=69
 //f score>=80 && score <=89
 
-let score = 75.6;
+let score = 80;
 
 if(score>=90){
     console.log("A!!")
@@ -67,18 +67,18 @@ else{ console.log("땡!")}
 
 
 
-if(score>=90){
-    console.log("A!!")
-}
-if(score>=80 && score <=89){
-    console.log("B!!")
-}
-if(score>=70 && score <=79){
-    console.log("C!!")
-}
-else if(score>=60 && score <=69){
-    console.log("D!!")
-}
-else{console.log("땡!")}
+// if(score>=90){
+//     console.log("A!!")
+// }
+// if(score>=80 && score <=89){
+//     console.log("B!!")
+// }
+// if(score>=70 && score <=79){
+//     console.log("C!!")
+// }
+// else if(score>=60 && score <=69){
+//     console.log("D!!")
+// }
+// else{console.log("땡!")}
 
 
