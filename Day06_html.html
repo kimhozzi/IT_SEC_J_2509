@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!-- <css>
+div id = 'first' {
+    color = 'blue'
+    size = 10%px ~ 대충ㅇ이렇게 썼었던것같은디 
+}
+</css> -->
+<!-- div -> span -> a 태그 순으로 많이 쓰지 않을까..-->
+<style>
+  #first {
+    size: 20px;
+    background-color: rgb(67, 78, 78);
+  }
+  #arsenal {
+    font-family: "Malgun-Gothic";
+    color: red;
+  }
+  .gesigle {
+    size: 11px;
+    border-radius: 10px;
+  }
+  .comment {
+  }
+</style>
+
+<html>
+  <!-- Head : 문서 정보 담는 부분, 매타 정보-->
+  <head>
+    <title>html</title>
+  </head>
+
+  <body>
+    <!-- 컴퓨터는 띄어쓰기 줄바꿈 등을 인식하기 쉽지 않다. 그래서 <태그>로 직접 구분지어야 한다. -->
+    <span>
+      일부터 줄바꿈 안해주는 태그 엄청나게 길게 쓸 수 있ㅇ는 거지 ㅇㅇㅇ</span
+    >
+    <div id="first" style="color: red">
+      <!-- div에 다걸었구나,, 이런 점 또는 노가다다보니 inline-tag 잘 안쓴다..-->
+      <h1 px="50px">h is Heading</h1>
+      <h2>h'n' is size of header & this is h2</h2>
+      <h3>this is h3</h3>
+    </div>
+
+    <div>
+      <!-- 버튼태그에 a 태그 붙이면 되었던가-->
+      <p>p is paragraph</p>
+      <a>이거 즉각적으로 변경되나? - 오 바로되네</a>
+    </div>
+    <br />
+    <div id="gitaddress">
+      <div>
+        <a href="https://github.com/kimhozzi"> my git address</a>
+      </div>
+    </div>
+    <br />
+    <div id="arsenal">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/en/thumb/5/53/Arsenal_FC.svg/1021px-Arsenal_FC.svg.png"
+        alt=""
+        width="90"
+        height="100"
+      />
+      <h1>대 스 날</h1>
+    </div>
+
+    <div class="gesigle">
+      <span> "2조 쳐 부어놓고 리그우승없는 무국적자새끼 하나 있음 ㅇㅇ"</span>
+    </div>
+
+    <div class="comment">
+      <input type="text" placeholder="여기에 댓글 입력" />
+    </div>
+
+    <div class="testMailbox">
+      <label> <input type="checkbox" name="answer" value="yes" /> Yes </label>
+      <label> <input type="checkbox" name="answer" value="no" /> No </label>
+
+      <br />
+      <button type="button" text-align="text-center">투표</button>
+      <br />
+    </div>
+
+    <!-- 네이버 블로그 배너도 href로 걸어놨는데, 왜 새 창이 열리는걸까 -->
+
+    <footer>figma만 하면 되겠다 ㅇㅇ</footer>
+  </body>
+</html>
+
+<!-- 이후 웹서버 + WAS 까지 하고 연동-->
+<!-- 보안 문제로 인해 웹에서는 전체적으로 하드웨어 허용 불가능하다.. -->
+
+<!-- '.' , '#' -->
+<!-- formatter야 어디 div가 안닫혀있는지 말해줘야지 그냥 body문제라 하면 되겠어?-->
