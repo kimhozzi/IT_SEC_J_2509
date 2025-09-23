@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Page Title</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        background-color: #f1f1f1;
+        padding: 10px;
+        text-align: center;
+      }
+
+      /* Style the topnav */
+      ul.topnav {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        background-color: #333333;
+        /* 자식 요소(li)들이 가운데로 정렬 */
+        justify-content: center;
+      }
+
+      /* Style links in topnav */
+      ul.topnav li a {
+        display: block;
+        color: #f1f1f1;
+        padding: 14px 16px;
+        text-decoration: none;
+        align-content: center;
+      }
+
+      /* Change color on hover */
+      ul.topnav li a:hover {
+        background-color: #dddddd;
+        color: black;
+      }
+
+      .flex-container {
+        display: flex;
+        align-items: stretch;
+        gap: 2vw;
+        min-height: 100dvh; /* ← mobile까지 안정적인 동적 뷰포트 단위 */
+        /* 또는 height: 100vh; (구형 브라우저 호환) */
+      }
+
+      .left {
+        flex: 0 0 30%; /* 왼쪽 30% 고정 */
+        padding: 1rem; /* 텍스트 여백: 폰트 기준 */
+      }
+
+      .divider {
+        align-self: stretch; /* 컨테이너 높이만큼 쭉 */
+        width: clamp(0.08rem, 0.25vw, 0.15rem); /* 얇은 세로선(반응형 두께) */
+        background: #000;
+        opacity: 0.7;
+      }
+
+      .right {
+        flex: 1 1 0; /* 나머지 70% */
+        padding: 1rem;
+      }
+
+      /* Style the footer */
+      footer {
+        background-color: #f1f1f1;
+        padding: 8px;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>헤더에요</h1>
+    </header>
+    <ul class="topnav">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">News</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+    <!-- inline css
+     태그 안에다가 css 스타일 다 때려 넣는거
+     잘 안쓰임-->
+    <div class="flex-container">
+      <div class="left">11111</div>
+      <div class="divider"></div>
+      <div class="right">2222</div>
+    </div>
+
+    <footer>
+      <p>Footer</p>
+    </footer>
+  </body>
+
+  <!-- html 문서 끝 -->
+</html>

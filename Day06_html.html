@@ -19,9 +19,33 @@ div id = 'first' {
     size: 11px;
     border-radius: 10px;
   }
-  .comment {
+  #button1 {
+    margin-left: 25px;
+  }
+
+  table,
+  td,
+  th {
+    border: 1px solid;
+    padding: 10px;
+  }
+
+  table {
+    margin: 20rem;
+    padding: auto;
   }
 </style>
+<!-- <script>
+    function voteResult{
+        ~
+        ~ 대충 뭐 이런식으로 ㅇㅇ 투표 결과 반영하는 함수 입갤
+    };
+    function voteResultUpdate{
+        ~
+        ~ 결과에 +1 이런식으로 ㅇㅇ..
+    }
+
+</script> 파일형식은 javascript -->
 
 <html>
   <!-- Head : 문서 정보 담는 부분, 매타 정보-->
@@ -50,6 +74,7 @@ div id = 'first' {
     <div id="gitaddress">
       <div>
         <a href="https://github.com/kimhozzi"> my git address</a>
+        <!-- 네이버 블로그 배너도 href로 걸어놨는데, 왜 새 창이 열리는걸까 -->
       </div>
     </div>
     <br />
@@ -65,6 +90,7 @@ div id = 'first' {
 
     <div class="gesigle">
       <span> "2조 쳐 부어놓고 리그우승없는 무국적자새끼 하나 있음 ㅇㅇ"</span>
+      <!-- ehehehe 삼김에 컵라면 조져야지 남은 1주일은 근데 진순은 개오바임 ㅇㅇ;-->
     </div>
 
     <div class="comment">
@@ -72,17 +98,51 @@ div id = 'first' {
     </div>
 
     <div class="testMailbox">
-      <label> <input type="checkbox" name="answer" value="yes" /> Yes </label>
-      <label> <input type="checkbox" name="answer" value="no" /> No </label>
+      <form>
+        <label> <input type="checkbox" name="answer" value="yes" /> Yes </label>
+        <label> <input type="checkbox" name="answer" value="no" /> No </label>
 
-      <br />
-      <button type="button" text-align="text-center">투표</button>
-      <br />
+        <br />
+        <input
+          id="button1"
+          type="submit"
+          text-align="text-center"
+          value="Submit"
+        />
+
+        <br />
+      </form>
     </div>
 
-    <!-- 네이버 블로그 배너도 href로 걸어놨는데, 왜 새 창이 열리는걸까 -->
+    <div class="tables">
+      <table>
+        <tr>
+          <th>Firstname</th>
+          <!-- th = Table Header-->
+          <th>Lastname</th>
+        </tr>
+        <!-- tr = Table Row-->
+        <tr>
+          <td>Peter</td>
+          <!-- Table Data -->
+          <td>Griffin</td>
+        </tr>
+        <tr>
+          <td>Lois</td>
+          <td>Griffin</td>
+        </tr>
+      </table>
+    </div>
 
     <footer>figma만 하면 되겠다 ㅇㅇ</footer>
+
+    <script>
+      if (window.innerWidth < 768) {
+        alert(
+          "현재 페이지는 PC 화면에 최적화되어 있습니다.\n모바일에서는 일부 레이아웃이 깨질 수 있습니다."
+        );
+      }
+    </script>
   </body>
 </html>
 
@@ -91,3 +151,11 @@ div id = 'first' {
 
 <!-- '.' , '#' -->
 <!-- formatter야 어디 div가 안닫혀있는지 말해줘야지 그냥 body문제라 하면 되겠어?-->
+
+<!-- 글자 크기나 UI 비율을 전역적으로 통일하려면 → rem (일관성 ↑)   "폰트·여백·UI 스케일링에 강함"            -->
+<!-- 부모 박스 크기에 맞춰 공간 배분하려면 → %-->
+<!-- 화면 크기에 맞게 조정하고 싶다면 -> vh      "레이아웃 크기 잡기에 강함"      -->
+<!-- margin vs padding   -->
+<!-- margin : 다른 요소와 얼마나 띄울 것인가?-->
+<!-- padding : 태그 안에서 태그와 element와 얼마나 띄울 것인가-->
+<!-- 확실히 클로드가 잘해-->
