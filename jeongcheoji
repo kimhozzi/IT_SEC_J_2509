@@ -164,3 +164,69 @@ struct , pointer 는 화살표로 ...
 무조건 int =n , 또는 int *arr = (int *) malloc(5 * sizeof(int)); 이런식으로 줄 건데
 그냥 arr[n] 과 같다고 보면 된다.
 
+
+## 재귀함수(간헐적으로 나옴 ㅇㅇ)
+EX_재귀함수
+
+#include <stdio.h>
+
+// 재귀 함수 정의
+
+Q1
+int sumArray(int arr[], int n) {
+    if (n == 0)             // ✅ 기저 조건: 배열 요소가 없으면 합은 0
+        return 0;
+    else
+        return arr[n-1] + sumArray(arr, n-1);  // ✅ 마지막 요소 더하기
+}
+
+int main() {
+    int arr[] = {10, 20, 30, 40, 50};
+    int n = sizeof(arr)/sizeof(arr[0]);
+
+    int total = sumArray(arr, n);
+    printf("배열 요소의 합 = %d\n", total);
+
+    return 0;
+}
+
+Ans = 150
+
+
+
+main -> 
+
+int arr[] = 10 50  ( 10단위 hop)
+
+int n = sizeof arr =5  sizeof arr[0] =1 
+
+n=5 
+
+여기까지 main 수행하고
+
+sumArray를 만났으니 sumArray 함수로 가야지 ㅇㅇ
+
+
+int sumArray (int arr[] , int n )
+
+
+if - else 로 갔고
+sumArray를 호출하는 재귀함수구나!!
+
+n-1 로 가는구나..
+
+모든 재귀함수 문제는 정수+함수() 이런식이니까
+
+
+-1 -1 -1 -1
+
+arr[n]
+
+최소조건  arr[0]  부터 거슬러 올라간다고 ㅇㅇ
+
+이런 식으로 간다고 
+
+
+
+
+
