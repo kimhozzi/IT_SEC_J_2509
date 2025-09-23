@@ -111,5 +111,56 @@ result = 50 20 30 10 50 ....?
 
 
 
+int num = 42;
+char str[] = "Hello";
+int arr[] = {1, 2, 3, 4, 5};
 
+/* 배열과 포인터는 결국 비슷한 놈이지만,
+차이점은 배열은 주소값을 변경할수 없고, 포인터는 주소값을 변경할수 있다 */
+int *ptr = &num;
+ptr= arr;
+
+printf("%d\n", &num);
+printf("%d\n", *ptr);
+printf("%s\n", str);
+
+// arr[0], *ptr 이거는 같다
+printf("%d\n", arr[0]);
+printf("%d\n", *ptr);
+
+return 0; 
+
+포인터가 int 같은 단일 데이터가 아닐 경우....
+
+애초에 주소값 안물어보니까 값만 주겠구나 생각해라..
+포인터로 함수만들어놓고 주면 함수값 넣고,,, 아니면 말고,,,,
+
+
+
+포인터가 int 같은 단일 데이터가 아닐경우,
+포인터나 배열이나 비슷하다
+아래 코드는 포인터도 배열같이 써먹고, 배열도 포인터같이 써먹을수 있다는 예제이다
+
+// 같은 값이 나오는 서로 다른 표현 방법.
+char str[] = "Hello";
+char *ptr_a = str;
+char **ptr_b = &ptr_a; // 이중 포인터
+printf("%c\n", str[1]); // e
+printf("%c\n", *(ptr_a + 1)); // e
+printf("%c\n", ptr_a[1]); // e
+printf("%c\n", *(*ptr_b + 1)); // e
+printf("%c\n", (*ptr_b)[1]); // e
+char str2[] = "World";
+*ptr_b = str2;
+printf("%c\n", ptr_a[1]); // o
+
+평범한 struct 변수는 . 
+
+struct , pointer 는 화살표로 ...
+포인터로 가르킨 값은 가르킨 값 밖에 못뽑는다.
+
+
+틈틈이 등장하는 malloc은 -> Memony ALLOCation의 줄임말.
+무조건 int =n , 또는 int *arr = (int *) malloc(5 * sizeof(int)); 이런식으로 줄 건데
+그냥 arr[n] 과 같다고 보면 된다.
 
