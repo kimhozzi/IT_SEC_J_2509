@@ -85,7 +85,7 @@ tsconfg.node , tsconfig.json -> ts 환경설정, ts 양식 설정 가능
 -> 코딩 시 자유도 올라감 
 의존성 주입한 내역도 확인가능  
 
-전체 파일구조 
+- 기본 사용 시 전체 파일구조 
 my-app/
  ├─ index.html			v
  ├─ package.json
@@ -96,11 +96,29 @@ my-app/
      └─ RanLunchMenu.jsx		v
 ~ > JAVA 와 흡사하다.
 
+-Router 사용 시 React의 파일 구조 : java MVC 파일구조와 비교
+src/
+ ├─ components/     → 재사용 가능한 UI 컴포넌트 (Button, Navbar 등)
+ ├─ pages/          → Router에서 연결되는 페이지 단위 컴포넌트
+ ├─ layouts/        → 공통 레이아웃 (Header/Footer 포함 구조)
+ ├─ hooks/          → 커스텀 훅 (비즈니스 로직/상태 관리)
+ ├─ services/       → API 호출 (Spring의 service + repository 역할 흡사)
+ ├─ context/        → 전역 상태 관리 (Redux, Context API)
+ ├─ assets/         → 정적 파일 (이미지, css, 폰트)
+ ├─ App.js          → Router 정의 (Spring의 DispatcherServlet 느낌)
+ └─ index.js        → 진입점 (Spring Boot의 Application.java 느낌)
 
+-> tsx 에서 바로 CSS 를 손보는 것도 가능하다. 
+import { CSSProperties } from "react";
 
+const inputStyle: CSSProperties = {
+  backgroundColor: "#f0f0f0",
+  border: "1px solid #ccc",
+  padding: "0.5rem 1rem",
+  borderRadius: "5px"
+};
 
-
-
+<input value={inputVal} onChange={...} style={inputStyle} />;
 
 
 
