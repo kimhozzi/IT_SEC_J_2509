@@ -1,0 +1,66 @@
+Vercel 사용 서버 구현 - 집에서, 시간 되면 여기서
+vs
+FastAPI -> Backend
+Vercel -> Frontend
+
+구조
+_fastapi_ app
+ ㄴ main.py  --> import , get-post방식 통신(flask 와 비슷)
+ ㄴ requirements.txt --> fastapi , uvicorn 버전 체크?
+
+
+
+1. main.py 
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI()
+
+class Item(BaseModel):
+    name: str
+
+# GET 요청 테스트
+@app.get("/hello")
+def hello():
+    return {"message": "Hello from FastAPI!"}
+
+# POST 요청 테스트
+@app.post("/echo")
+def echo(item: Item):
+    return {"you_sent": item.dict()}
+
+
+2. requirements.txt 
+fastapi==0.111.1
+uvicorn==0.24.0
+
+
+3. venv, FastAPI 설치하기 
+# 가상환경 생성
+python -m venv venv
+venv\Scripts\activate
+
+# FastAPI 설치
+pip install -r requirements.txt
+
+
+4. 테스트 (bash)
+uvicorn main:app --reload
+{message" : "HI}     // def hello() return {"message"} 키가 message 
+
+
+curl -X POST http://127.0.0.1:8000/echo -H "Content-Type: application/json" -d "{\"name\":\"kim\"}"
+(json)
+{"you_sent":{"name":"kim"}}
+
+
+! 백엔드 서버 完 ! 
+
+010 4595 6530 - 오후 담임선생님 전화번호
+
+이번 주 서버하나 파서 git에 올리기...
+
+
+
+shorturl.at/1GzaD
+shorturl.at/96aYt = https://drive.google.com/drive/folders/1hgfM1NAgC9LQYWYO8saanphcB6ACWDY0

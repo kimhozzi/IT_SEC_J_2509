@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #f1f1f1;
+      padding: 10px;
+      text-align: center;
+    }
+
+    /* Style the topnav */
+    ul.topnav {
+      display: flex;
+
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      background-color: #333333;
+      /* 자식 요소(li)들이 가운데로 정렬 */
+      justify-content: center;
+    }
+
+    /* Style links in topnav */
+    ul.topnav li a {
+      display: block;
+      color: #f1f1f1;
+      padding: 14px 16px;
+      text-decoration: none;
+      align-content: center;
+    }
+
+    /* Change color on hover */
+    ul.topnav li a:hover {
+      background-color: #dddddd;
+      color: black;
+    }
+
+    .flex-container {
+      display: flex;
+      align-items: stretch;
+      gap: 2vw;
+      min-height: 100dvh; /* ← mobile까지 안정적인 동적 뷰포트 단위 */
+      /* 또는 height: 100vh; (구형 브라우저 호환) */
+    }
+
+    .left {
+      flex: 30%; /* 왼쪽 30% 고정 */
+      padding: 1rem; /* 텍스트 여백: 폰트 기준 */
+    }
+
+    .divider {
+      align-self: stretch; /* 컨테이너 높이만큼 쭉 */
+      width: clamp(0.08rem, 0.25vw, 0.15rem); /* 얇은 세로선(반응형 두께) */
+      background: #000;
+      opacity: 0.7;
+    }
+
+    .right {
+      flex: 30%; /* 나머지 70% */
+      padding: 1rem;
+    }
+    .whattodo {
+      margin: 10px;
+      padding: 1rem;
+      justify-content: center;
+      align-content: center;
+    }
+
+    /* Style the footer */
+    footer {
+      background-color: #f1f1f1;
+      padding: 8px;
+      text-align: center;
+    }
+  </style>
+
+  <head>
+    <title>Page Title</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>헤더에요</h1>
+    </header>
+    <ul class="topnav">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">News</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+
+    <div>
+      <div class="whattodo">뭐 먹을까?</div>
+    </div>
+    <!-- inline css
+     태그 안에다가 css 스타일 다 때려 넣는거
+     잘 안쓰임-->
+    <div class="flex-container">
+      <div id="demo">??demo</div>
+
+      <div class="right">
+        <span>
+          <input
+            id="input1"
+            onkeypress="testop(event)"
+            onchange="testop(event)"
+            type="number"
+          />
+          <input
+            id="operator"
+            onkeypress="testop(event)"
+            onchange="testop(event)"
+            type=" "
+          />
+          <!-- test ->callback함수 , event ->함수의 매변-->
+
+          <input
+            id="input2"
+            onkeypress="testop(event)"
+            onchange="testop(event)"
+            type="number"
+          />
+          =
+          <span id="result1">...</span>
+        </span>
+      </div>
+
+      <!-- <div class="divider"></div>
+      <div class="right">2222</div> -->
+    </div>
+
+    <footer>
+      <p>Footer</p>
+    </footer>
+
+    <script>
+      (async () => {
+        /* 
+        null safety 기법 : 해당 객체에 내가 접근하려는 속성이 없어도 에러가 나지 않음.
+        */
+
+        let data = document.getElementById("demo");
+        console.log(`data`, data);
+      })();
+
+      function test(event) {
+        if (event.keyCode == 13) {
+          alert("작동 0");
+          const input1_val = parseInt(input1.value);
+          const input2_val = parseInt(input2.value);
+          console.log(typeof input1_val.value); // 결과 : string  -> 해결책 함수 내부에서 다시 변수화 해줘보자! - 위 let 변수 2개 생성 결과 역시 string -> 아 그래서 parseInt 하나봐 파싱을 ㅇㅇ
+
+          //
+
+          result1.innerText = input1_val + input2_val;
+          console.log(result1);
+          // ans :  [object HTMLInputElement][object HTMLInputElement]
+        }
+        // console.log(typeof input1.value); = string 아 ! 그래서 함수 내부에서도 변수를 다시 선언해주는구나!
+        //문제 해결 및 결론 : 브라우저에서 일반적인 자료형 타입 = string -> .'. parsing 진행 -> 끝ㅡ Number(input1.value) 를 사용해도 된다.
+      }
+
+      function testop(event) {
+        //1. operator getE ~ 로 가져오고 위에서처럼 input값들은 int로 파싱
+
+        console.log(input1.value);
+        console.log(operator.value);
+        console.log(input2.value);
+        if (event.keyCode == 13) {
+          const input1_val = parseInt(input1.value);
+          const operator = document.getElementById("operator");
+          let operator_text = operator?.value ?? "";
+
+          const input2_val = parseInt(input2.value);
+          // 그냥 이게 문제였네 ㅇㅇ const result1 = parseInt(result1.value); 왜 이게 문제였을까?
+          //2. 조건문 만들기. if +  오퍼레이터의 부호에 따라 연산 진행
+          if (operator_text == "+") {
+            alert("작동 0");
+            result1.innerText = input1_val + input2_val;
+          } else if (operator_text == "-") {
+            alert("작동 0");
+            result1.innerText = input1_val - input2_val;
+            console.log(result1.innerText);
+          } else if (operator_text == "*") {
+            alert("작동 0");
+            result1.innerText = input1_val * input2_val;
+          } else if (operator_text == "/") {
+            alert("작동 0");
+            result1.innerText = input1_val / input2_val;
+          }
+          console.log(result1);
+        }
+      }
+      //
+
+      // ans :  [object HTMLInputElement][object HTMLInputElement]
+      // console.log(typeof input1.value); = string 아 ! 그래서 함수 내부에서도 변수를 다시 선언해주는구나!
+      //문제 해결 및 결론 : 브라우저에서 일반적인 자료형 타입 = string -> .'. parsing 진행 -> 끝ㅡ Number(input1.value) 를 사용해도 된다.
+
+
+
+      
+      // /*이거 데이터 넣으려면 또 let input1 addEventLitsener 넣어줘야하나? - 맞다.*/
+      // window.addEventListener("DOMContentLoaded", () => {
+      //   /*
+      //   자바스크립트 코드에서 document.getElementById() 같은 걸 쓸 때, 해당 요소가 아직 DOM에 없으면 null이 반환됨
+      //   그래서 보통 DOM이 완성된 후에 실행하도록 DOMContentLoaded 이벤트를 걸어주는 것. DOM = Document Object Model : HTML 구조가 트리 형태로 보이는데, 이게 바로 DOM
+
+      //  그래서 DOMContentLoaded 로 html구조를 불러오고 나서 이벤트를 추가한다~~ 이런 뜻으로 보인다. 그렇다면 addEventLitsener 추가 할 때 반드시 넣어주어야 할 것이다. ㅇㅇ
+      //   */
+      //   const input1 = document.getElementById("input1");
+      //   const input2 = document.getElementById("input2");
+      //   const result1 = document.getElementById("result1");
+
+      //   function updateResult() {
+      //     // 값 가져오기 (숫자로 변환, 비어있으면 0)  아~ 파싱을하나?
+      //     const val1 = parseFloat(input1.value) || 0;
+      //     //const val1 = parseFloat(input1.value) || 0; -> val1 =  1 || 0
+      //     const val2 = parseFloat(input2.value) || 0;
+
+      //     result1.textContent = val1 + val2; // 결과 반영
+      //   }
+
+      //   // input 이벤트 리스너 등록
+      //   input1.addEventListener("input", updateResult);
+      //   input2.addEventListener("input", updateResult);
+      // });
+    </script>
+  </body>
+
+  <!-- 대체 react는 무엇이길래 ,, ? ! -->
+
+  <!-- Q1. 왜 html에서는 let 대신 const(상수)를 주로 사용할까?-->
+  <!-- ANS.
+   ex) input1이라는 변수에 다른 값을 넣어버리면 코드가 꼬임. 그래서 const로 고정시켜 놓는 게 안전.
+       DOM 같은 객체를 const로 선언해도 물론 내부 속성은 바꿀 수 있다.
+    -->
+</html>
