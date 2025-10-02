@@ -123,6 +123,27 @@ const inputStyle: CSSProperties = {
 
 
 
+Virtual Machine Linux 인터넷 연결
+
+-> 파일 -> 환경설정 -> 네트워크 -> 네트워크 CIDR 설정 & 포트포워딩(SSH) 진행
+
+
+-> kali 설정 -> 네트워크 -> NAT 네트워크 설정
+
+
+-> linux 안에서 -> 네트워크-> Wired Connection IPv4 Settings -> IP주소 맞춰주기
+~ 어디에 사용할지는 모르겠다...
+
+
+
+
+
+
+
+
+
+
+
 
 010 4595 6530 - 오후 담임선생님 전화번호
 
