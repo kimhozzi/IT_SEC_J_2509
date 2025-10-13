@@ -85,7 +85,7 @@ tsconfg.node , tsconfig.json -> ts 환경설정, ts 양식 설정 가능
 -> 코딩 시 자유도 올라감 
 의존성 주입한 내역도 확인가능  
 
-전체 파일구조 
+- 기본 사용 시 전체 파일구조 
 my-app/
  ├─ index.html			v
  ├─ package.json
@@ -95,6 +95,107 @@ my-app/
      ├─ App.jsx ~=~ tsx?		v  -  JS  App.jsx에서 RanLunchMenu를 불러와서 사용
      └─ RanLunchMenu.jsx		v
 ~ > JAVA 와 흡사하다.
+
+-Router 사용 시 React의 파일 구조 : java MVC 파일구조와 비교
+src/
+ ├─ components/     → 재사용 가능한 UI 컴포넌트 (Button, Navbar 등)
+ ├─ pages/          → Router에서 연결되는 페이지 단위 컴포넌트
+ ├─ layouts/        → 공통 레이아웃 (Header/Footer 포함 구조)
+ ├─ hooks/          → 커스텀 훅 (비즈니스 로직/상태 관리)
+ ├─ services/       → API 호출 (Spring의 service + repository 역할 흡사)
+ ├─ context/        → 전역 상태 관리 (Redux, Context API)
+ ├─ assets/         → 정적 파일 (이미지, css, 폰트)
+ ├─ App.js          → Router 정의 (Spring의 DispatcherServlet 느낌)
+ └─ index.js        → 진입점 (Spring Boot의 Application.java 느낌)
+
+-> tsx 에서 바로 CSS 를 손보는 것도 가능하다. 
+import { CSSProperties } from "react";
+
+const inputStyle: CSSProperties = {
+  backgroundColor: "#f0f0f0",
+  border: "1px solid #ccc",
+  padding: "0.5rem 1rem",
+  borderRadius: "5px"
+};
+
+<input value={inputVal} onChange={...} style={inputStyle} />;
+
+
+### letMake Server for python ### 
+## uvicorn 설치 ~=~ apache tomcat (java)
+
+pip install uv  -> 파이썬 버전이 달라져도 사용할 수 있게 하는(?).. uv가 뭐지 그래서  
+https://devocean.sk.com/blog/techBoardDetail.do?ID=165922&boardType=techBlog 참고
+uv => Uvicorn 의 uv FastAPI 같은 ASGI 기반 앱에서 사용.. 
+java의 아파치-톰캣 와 비슷한 ㅇㅇ 
+結 uv == WAS 
+1. 설치 방법
+py -3.10 -m pip install uv
+
+py -3.10 -m uv venv venv
+
+.\venv\Scripts\Activate.ps1
+py -pythonversion -m ~~ 
+\ => 역슬래시로 
+
+2. requirements.txt 도구 설치
+requirements.txt 파일 만든 후 
+"
+fastapi
+uvicorn[standard]
+sqlalchemy
+asyncpg         # 비동기 PostgreSQL 드라이버 (psycopg2-binary 대신 사용)
+pydantic-settings # 환경 변수 관리를 위한 Pydantic 라이브러리
+python-dotenv # 로컬 개발 환경에서 .env 파일 로드를 위해 필요 (선택 사항)
+pydantic # fastapi req 유효성 검사
+scikit-learn
+"
+를 추가한 후 , 이 안에 기타 필요한 툴 설치
+uv pip install -r requirements.txt
+를 통해 설치 
+
+##! if error !## 
+만약 requirements 안깔린다면
+.\venv\Scripts\Activate.ps1 이게 활성화 된 상태에서
+pip install uv 이후 uv pip install -r requirements.txt 진행 
+
+java도 심심하면 폼등  온갖 xml 파일에서 지랄나잖아 ㅇㅇ
+
+
+Q. 기존에 내가 했던 웹페이지에서 uvicorn 설치하고 임포트 해주면 되나?
+Ans. ㅇㅇ, 대신 
+uv pip install mysql-connector-python
+
+conn = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="비밀번호",
+    database="데이터베이스명"
+)
+
+cursor = conn.cursor()
+cursor.execute("SELECT * FROM CHATTING")
+rows = cursor.fetchall()
+print(rows)
+
+conn.close()
+이런 식으로 자바 DTO,DAO 에서 했었던 것처럼 형식에 맞추어 넣어주기만 하면 되는듯
+
+
+
+### 보안 과목 ###
+## - 가상 PC+인터넷 환경 구축 -## 
+Virtual Machine Linux 인터넷 연결
+
+-> 파일 -> 환경설정 -> 네트워크 -> 네트워크 CIDR 설정 & 포트포워딩(SSH) 진행
+
+
+-> kali 설정 -> 네트워크 -> NAT 네트워크 설정
+
+
+-> linux 안에서 -> 네트워크-> Wired Connection IPv4 Settings -> IP주소 맞춰주기
+~ 어디에 사용할지는 모르겠다... 나중에 가상환경이랑 통신하려나..??
+
 
 
 

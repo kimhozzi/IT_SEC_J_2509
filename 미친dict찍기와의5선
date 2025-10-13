@@ -1,0 +1,122 @@
+from PycharmProjects.TestPy.ddoamp06 import count
+
+dictCal = {"1":[-10,3],"2":[-1,10],"3":[4,15],"4":[9,16] ,"5":[12,27] ,"6":[16,30] ,"7":[22,42] ,"8":[24,43]
+            ,"9":[20,35],"10":[18,33],"11":[10,21],"12":[-3,15]
+             }
+
+
+
+print("Q1")# 1년 평균 기온차
+total =0
+for low,high in dictCal.values():
+    total += high - low
+
+print( total /len(dictCal.keys()))
+# 틀릴리가없는데
+
+print("=====================")
+
+# 기온차 가장 큰 달 - 작은 달 -> 언제이고 기온차는 얼마인가
+print(type(dictCal))
+print("Q2")
+gaptem = sorted(dictCal.items(), key=lambda x:x[1][1] - x[1][0], reverse=True)  # 최고기온 - 최저기온
+# .'. x[1][1] == 최고기온   x[1][0] == 최저기온
+print(gaptem)
+
+for month, temps in gaptem:
+    month, temps, "기온차:", temps[1] - temps[0]
+print("=====================")
+# 기온차 가장 큰 달
+gapMax = gaptem[0][1][1] - gaptem[0][1][0]
+print("기온차 가장 큰 달:", gaptem[0][0][0], "기온차:", gapMax)
+print(gaptem[0])
+print(gaptem[0][0])
+print(gaptem[0][0][0])
+print("=====================")
+print("Q3")
+
+
+#3번째로 큰 값
+month_list = []
+temps_list = []
+# 빈리스트를 만들었다면? append 
+for month, temps in gaptem:
+    month_list.append(month)
+    temps_list.append(temps)
+gaprd = gaptem[1][1][1] - gaptem[1][1][0]
+# 3 = list [2]
+print(f"{month_list[2]} 월")
+print(f"기온차 : {abs(temps_list[2][1] - temps_list[2][0])}")
+
+# 짝수월의평균기온차
+# 0 아닌 2월시작 2씩증가
+
+
+print("=====================")
+print("Q4")
+# 최저기온이 높은 순으로 내림차순 정렬
+print("Q2 참고")
+gaptem_rf = sorted(dictCal.items(), key=lambda x:x[1][1] - x[1][0], reverse=False)
+#print(gaptem_rf)
+#print(dictCal.values())
+gaptem_rfl = sorted(list(dictCal.values()), key=lambda x:x[0], reverse=True)
+print(gaptem_rfl)
+print("=====================")
+print("Q5")
+#짝수월의 평균 기온차 출력
+#print(dictCal.keys())
+# 구조  -> 1. 짝수월출력 2.diff 구하기 high -low 3. 짝수 월의 평균기온을 출력하면 안되지 ㅇㅇㅇㅇㅇㅇ
+# 짝수 월의 기온차를 구해야 하지 아오 산수를못하니까 뇌가 멈추잖아
+jjakgap =0;
+count = 0;
+for i in range(2,len(dictCal.keys())+1,2):
+    print(f"{i} 월")
+    # print(dictCal.values())
+    low, high = dictCal[str(i)]  ### tq 이것때매 개지랄을했네
+    diff = high - low
+    print(high , low, diff)
+    jjakgap += diff
+    count += 1
+r_jjackgap = jjakgap/count
+print(f"{r_jjackgap}")
+# 야 12월이 안나오는데? -> ㅅㅂ 이래서 값이 틀렸던거였음 ㅇㅇ
+# +1 을 해줘야한다 . 12월에서! 멈추기때문에
+# i =12 가 되고 멈춘다
+# for i in range(2,len(dictCal.keys())+1,2): 에서 i 는 12가 됨
+#     i=12 는 조건을 만족하지 않기 때문에 for문을 실행하지 않음..? 이게 맞냐??
+# ㄴㄴ 아니다. 오직 while 만 i 값이 담긴다.
+#
+# count 를 왜 놔둬야하지
+# jjackMonth=0
+# count =0;
+# for i in range(2,len(dictCal.keys()),2):
+#     #print(month_list[i])
+#     gapgap = temps_list[i][0] - temps_list[i][1]
+#     coun
+#     jjackMonth += diff
+#     #print(gapgap)
+#     print(f"짝수   {dictCal.keys()} , {gapgap}")
+
+
+
+#
+# dictCal = {"1":[-10,3],"2":[-1,10],"3":[4,15],"4":[9,16],
+#            "5":[12,27],"6":[16,30],"7":[22,42],"8":[24,43],
+#            "9":[20,35],"10":[18,33],"11":[10,21],"12":[-3,15]}
+#
+# # 1년 평균 기온차
+# total = 0
+# for low, high in dictCal.values():
+#     total += high - low
+# print("1년 평균 기온차:", total / len(dictCal))
+#
+# # 기온차 가장 큰 달부터 정렬
+# gaptem = sorted(dictCal.items(), key=lambda x: x[1][1] - x[1][0], reverse=True)
+# print("gaptem 타입:", type(gaptem))
+# # 모든 달과 기온차 출력
+#
+#
+#
+# # 평균기온차가 3번째로 큰 달
+# print("3번째로 큰 기온차 달:", gaptem[2])
+ㅅㅂ DataFrame 쓰면 개쉬울텐데 
