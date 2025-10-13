@@ -202,6 +202,19 @@ Virtual Machine Linux 인터넷 연결
 -> linux 안에서 -> 네트워크-> Wired Connection IPv4 Settings -> IP주소 맞춰주기
 ~ 어디에 사용할지는 모르겠다... 나중에 가상환경이랑 통신하려나..??
 
+ufw -> 방화벽 설정 ~ 미친 포트뚫기
+
+ssh 
+sudo systemctl (re)start ssh
+
+ps -ef | grep ssh 
+
+vstp -> 파일을 주고받을 수 있다...,?
+
+
+
+
+하나씩 하나씩 
 
 
 
