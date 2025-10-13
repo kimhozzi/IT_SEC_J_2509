@@ -122,7 +122,31 @@ const inputStyle: CSSProperties = {
 
 
 
+## uvicorn 설치
 
+pip install uv  -> 파이썬 버전이 달라져도 사용할 수 있게 하는(?).. uv가 뭐지 그래서  
+uv => Uvicorn 의 uv FastAPI 같은 ASGI 기반 앱에서 사용.. 
+java의 아파치-톰캣 와 비슷한 ㅇㅇ 
+結 uv == WAS 
+1. 설치 방법
+py -3.10 -m pip install uv
+
+py -3.10 -m uv venv venv
+
+.\venv\Scripts\Activate.ps1
+py -pythonversion -m ~~ 
+\ => 역슬래시로 
+
+
+
+Q. 기존에 내가 했던 웹페이지에서 uvicorn 설치하고 임포트 해주면 되나?
+Ans. ㅇㅇ, 대신 
+
+
+
+
+
+### 보안 과목 ###
 Virtual Machine Linux 인터넷 연결
 
 -> 파일 -> 환경설정 -> 네트워크 -> 네트워크 CIDR 설정 & 포트포워딩(SSH) 진행
