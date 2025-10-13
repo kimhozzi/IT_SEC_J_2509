@@ -1,0 +1,15 @@
+netstat
+
+nslookup www. ~ . ~ 
+
+
+ifconfig - not ipconfig
+
+nmtui -> linux 네트워크 설정
+
+
+linux(Kali) IPv4 Congiguration Addresses 
+192.168.100.100/24  ~~ (/~~ =서브넷마스크)
+
+0 종료
+6 재부팅
