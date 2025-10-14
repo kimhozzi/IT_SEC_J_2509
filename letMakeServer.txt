@@ -161,7 +161,7 @@ pip install uv 이후 uv pip install -r requirements.txt 진행
 
 java도 심심하면 폼등  온갖 xml 파일에서 지랄나잖아 ㅇㅇ
 
-
+# uvicorn DB와 연동하는 방법 # 
 Q. 기존에 내가 했던 웹페이지에서 uvicorn 설치하고 임포트 해주면 되나?
 Ans. ㅇㅇ, 대신 
 uv pip install mysql-connector-python
@@ -180,6 +180,59 @@ print(rows)
 
 conn.close()
 이런 식으로 자바 DTO,DAO 에서 했었던 것처럼 형식에 맞추어 넣어주기만 하면 되는듯
+
+## 심화 - POST 방식으로 DB-서버 연동하기 ## 
+ ✅ DB 설정 (SQLite 예시)
+DATABASE_URL = "sqlite:///./test.db"
+engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
+SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
+Base = declarative_base()
+
+# ✅ DB 모델 정의
+class ItemDB(Base):
+    __tablename__ = "items"
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, nullable=False)
+    price = Column(Float, nullable=False)
+    description = Column(String)
+
+# ✅ DB 테이블 생성
+Base.metadata.create_all(bind=engine)
+
+# ✅ 요청 모델 정의
+class Item(BaseModel):
+    name: str
+    price: float
+    description: str | None = None
+
+# ✅ POST 엔드포인트
+@app.post("/items")
+async def create_item(item: Item):
+    db = SessionLocal()
+    try:
+        # (1) DB 모델 객체로 변환
+        db_item = ItemDB(
+            name=item.name,
+            price=item.price,
+            description=item.description
+        )
+        # (2) DB에 추가
+        db.add(db_item)
+        db.commit()
+        db.refresh(db_item)  # 저장된 객체 갱신 (id 등 포함)
+        return {"message": "데이터 저장 완료", "item": item}
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        db.close()
+
+
+
+
+
+
+
 
 400(auth)
 402(not found error)
